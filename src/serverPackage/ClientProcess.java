@@ -6,12 +6,10 @@ import java.net.Socket;
 public class ClientProcess extends Thread {
     Socket socket;
     Operations op;
-    public static int compteurGlobal = 0;
 
     public ClientProcess(Socket socket, Operations op) {
         this.socket = socket;
         this.op = op;
-        compteurGlobal++;
     }
     public void run() {
         double resultat = 0;
@@ -30,6 +28,6 @@ public class ClientProcess extends Thread {
                 System.out.println("Opérateur invalide !");
         }
         PrintWriter out = new PrintWriter(System.out, true);
-        out.println("Resultat de l'operation n°+"+ compteurGlobal+": "+resultat);
+        out.println("Resultat de l'operation n°+"+ Serveur.getCompteur() + ": "+resultat);
     }
 }

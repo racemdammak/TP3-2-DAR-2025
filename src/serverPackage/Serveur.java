@@ -6,7 +6,14 @@ import java.net.Socket;
 
 
 public class Serveur {
+    public static int compteur = 0;
+    public static synchronized int  getCompteur()
+    {
+        compteur++;
+        return compteur;
+    }
     public static void main(String[] args) {
+
         try (ServerSocket socket = new ServerSocket(1234)) {
             while (true) {
                 System.out.println("Serveur en attente d'une connexion ");
